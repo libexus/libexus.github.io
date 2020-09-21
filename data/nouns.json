@@ -1,0 +1,9 @@
+{
+  "data": [
+    {"gr":"nmo", "sg1":"amicus", "st":"amic", "tr":"Freund"},
+    {"gr":"nfa", "sg1":"femina", "st":"femin", "tr":"Frau"},
+    {"gr":"nfe", "sg1":"res", "st":"r", "tr": "Sache"},
+    {"gr":"nmk", "sg1":"homo", "st":"homin", "tr":"Mensch"},
+    {"gr":"nmu", "sg1":"casus", "st":"cas", "tr":"Fall"}
+  ]
+}

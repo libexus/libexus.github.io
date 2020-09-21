@@ -1,0 +1,45 @@
+/* (c) Thomas Prechelmacher, 2020 */
+
+* {
+  font-family: "DejaVu Sans", sans-serif;
+}
+
+.incorrect {
+  background-color: #ffe1b7; /* Red */
+}
+
+.correct {
+  background-color: #d5ffb7; /* Green */
+}
+
+.incorrect.correct {
+  background-color: #fff9b7; /* Yellow, overwrites .incorrect and .correct */
+}
+
+#derinput {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    display: table;
+}
+
+.inputgrid {
+  display: inline-grid;
+  grid-template-columns: auto auto;
+}
+
+input {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.inputgrid > * , div[id=word], input#submit , #derinput > p{
+  margin: 10px;
+  padding: 10px;
+}
+
+div[id=word] {
+  font-weight: bold;
+  font-size: 120%;
+  text-align: center;
+  display: block;
+}
