@@ -1,6 +1,6 @@
 # Format der JSON-Wörterdatei
 
-Momentan nur Nomen berücksichtigt(WIP), andere Wortarten können enthalten sein, werden sich aber wahrscheinlich ändern
+*Momentan nur Nomen und Verben berücksichtigt(WIP), andere Wortarten können enthalten sein, werden sich aber wahrscheinlich ändern.*
 
 ## Allgemeine Felder
 
@@ -66,9 +66,9 @@ Dieses Array(!) enthält einen oder mehrere Strings mit Übersetzungen ins Deuts
 
 Dieses Feld enthält in dieser Reihenfolge folgende Informationen:
 
-- Wortart ist `n`
-- Geschlecht
-- Deklination.
+1. Wortart ist `n`
+2. Geschlecht
+3. Deklination.
 
 ### `data[].sg1` - Erster Fall Singular
 
@@ -77,3 +77,28 @@ Dieses Element enthält das Wort im ersten Fall Singular (z.B. `amicus`).
 ### `data[].st` - Wortstamm
 
 Dieses Element gibt den Wortstamm des Nomens an (z.B `amic`).
+
+## Verben
+
+### `data[].gr` - Grammatik
+
+Dieses Feld enthält folgende Informationen:
+
+1. Wortart ist `v`
+2. Konjugation
+
+### `data[].inf` - Infinitiv
+
+Dieses Element enthält das Infinitiv des Verbs (z.B `audire`).
+
+### `data[].st` - Wortstamm
+
+Dieses Element enthält den Wortstamm des Verbs (z.B `aud`).
+
+### `data[].p_st` - Wortstamm Perfekt
+
+Dieses Element enthält den Wortstamm des Verbs im Perfekt (z.B. `audiv`).
+
+### `data[].ppp_st` - Wortstamm Partizip Perfekt Passiv
+
+Dieses Element enthält den Wortstamm des Verbs im Partizip Perfekt Passiv (z.B. `audit`).
