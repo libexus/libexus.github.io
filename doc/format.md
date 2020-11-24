@@ -102,3 +102,22 @@ Dieses Element enthält den Wortstamm des Verbs im Perfekt (z.B. `audiv`).
 ### `data[].ppp_st` - Wortstamm Partizip Perfekt Passiv
 
 Dieses Element enthält den Wortstamm des Verbs im Partizip Perfekt Passiv (z.B. `audit`).
+
+## Adjektive
+
+### `data[].gr` - Grammatik
+
+Diese Element enthält folgende Infos:
+
+1. Wortart ist `j`
+2. Deklination(nur `a` und `k`)
+
+### `data[].st` - Wortstamm
+
+Dieses Element enthält den Stamm des Adjektivs. (z.B. `parv`)
+
+### `data[].sg1[]`
+
+Dieses Array enthält bei der `k` Dekl. die ersten Fälle(Sg) in der Reihenholge m/f-n bzw. m-f-n
+
+<!-- EOF -->
