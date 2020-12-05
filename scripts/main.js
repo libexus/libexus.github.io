@@ -11,6 +11,9 @@ let lastInput = "";
 
 function init() {
   document.getElementById("submit").onclick = submit;
+  document.getElementById("loadnouns").onclick = () => loadData("data/nouns.json");
+  document.getElementById("loadverbs").onclick = () => loadData("data/verbs.json");
+  document.getElementById("loadadjectives").onclick = () => loadData("data/adjectives.json");
   loadData("data/verbs.json");
 }
 
