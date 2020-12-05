@@ -36,6 +36,7 @@ function buildCurrentForm() {
     switch (data.data[i].gr[0]) {
       case "n": formData = buildNoun(); break;
       case "v": formData = buildVerb(); break;
+      case "j": formData = buildAdjective(); break;
       default:  console.error(`"${data.data[i].gr[0]}" ist keine gültige Wortart!`);
     }
     if(formData){
@@ -126,6 +127,36 @@ function buildVerb() {
   return formData;
 }
 
+function buildAdjective() {
+  let adj = data.data[i];
+  let formData = {};
+  if(adj.gr[1]+"m" in adjEndSet) {
+    formData = {
+      header: adj.sg1[0],
+      form: []
+    }
+    if (adj.gr[1] == "a") {
+      formData.form.push({id: "sg1_f", name: "1.Sg F", solution: adj.st + adjEndSet[adj.gr[1]+"f"][0]});
+      formData.form.push({id: "sg1_n", name: "1.Sg N", solution: adj.st + adjEndSet[adj.gr[1]+"n"][0]});
+    } else if (adj.gr[1] == "k") {
+      if (adj.sg1.length === 1) {
+        formData.form.push({id: "sg1_f", name: "1.Sg F", solution: adj.sg1[0]});
+        formData.form.push({id: "sg1_n", name: "1.Sg N", solution: adj.sg1[0]});
+      } else if (adj.sg1.length === 2) {
+        formData.form.push({id: "sg1_f", name: "1.Sg F", solution: adj.sg1[0]});
+        formData.form.push({id: "sg1_n", name: "1.Sg N", solution: adj.sg1[1]});
+      } else if (adj.sg1.length === 3) {
+        formData.form.push({id: "sg1_f", name: "1.Sg F", solution: adj.sg1[1]});
+        formData.form.push({id: "sg1_n", name: "1.Sg N", solution: adj.sg1[2]});
+      }
+    }
+  } else {
+    alert (`Fehler beim Parsen von ${dataFile}: Das Wort "${adj.sg1[0]}" enthält eine unbekannte Deklination "${adj.gr[1]}".`);
+    formData = false;
+  }
+  return formData;
+}
+
 function submit() {
   if(checkCurrentForm() === true) {
     lastInput = "";
@@ -182,6 +213,19 @@ let perfEndSet = [
 let pqpEndSet = [
   "eram", "eras", "erant", "eramus", "eratis", "erant"
 ]
+
+let adjEndSet = {
+  am : deklEndSet.o,
+  af : deklEndSet.a,
+  an : ["um", "i"   , "o"   , "um", "um" , "o",
+        "a" , "orum", "is"  , "a", "a" , "is"],
+  km :["",  "is",  "i",    "em", "", "i",
+      "es", "ium", "ibus", "es", "", "ibus"],
+  kf : ["",  "is",  "i",    "em", "", "i",
+      "es", "ium", "ibus", "es", "", "ibus"],
+  kn :["",  "is",  "i",    "e",  "",   "i",
+      "ia", "ium", "ibus", "ia", "ia", "ibus"]
+}
 
 init();
 // EOF
