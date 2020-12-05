@@ -153,6 +153,7 @@ function buildAdjective() {
         formData.form.push({id: "sg1_n", name: "1.Sg N", solution: adj.sg1[2]});
       }
     }
+    formData.form.push({id:"tr", name: "Übersetzung", solution: adj.tr});
   } else {
     alert (`Fehler beim Parsen von ${dataFile}: Das Wort "${adj.sg1[0]}" enthält eine unbekannte Deklination "${adj.gr[1]}".`);
     formData = false;

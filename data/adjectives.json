@@ -1,8 +1,8 @@
 {
   "data": [
-    {"gr": "ja", "sg1": ["parvus"], "st": "parv"},
-    {"gr": "jk", "sg1": ["fortis", "forte"], "st": "fort"},
-    {"gr": "jk", "sg1": ["celer", "celeris", "celere"], "st": "fort"},
-    {"gr": "jk", "sg1": ["atrox"], "st": "atroc"}
+    {"gr": "ja", "sg1": ["parvus"], "st": "parv", "tr": "klein"},
+    {"gr": "jk", "sg1": ["fortis", "forte"], "st": "fort", "tr": "tapfer"},
+    {"gr": "jk", "sg1": ["celer", "celeris", "celere"], "st": "celer", "tr": "schnell"},
+    {"gr": "jk", "sg1": ["atrox"], "st": "atroc", "tr": "wild"}
   ]
 }
