@@ -1,8 +1,48 @@
 /* (c) Thomas Prechelmacher, 2020 */
 
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   General styles for default HTML Tags
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
 * {
   font-family: "DejaVu Sans", sans-serif;
 }
+
+body {
+  max-width: 40rem;
+  margin: auto;
+  padding: 0.6rem;
+}
+
+h1, p {
+  text-align: center;
+}
+
+button {
+  background-color: white;
+}
+
+input {
+  min-width: 3em;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   Generic styles to achieve coherent styling
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.border, button, input, #derinput {
+  border: 1px solid #ccc; /* Gray */
+  border-radius: 3px;
+}
+
+.inputgrid > * , div[id=word] , #derinput > p, input#submit, button {
+  margin: 0.6rem;
+  padding: 0.6rem;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~
+   Styles for custom elements
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 .incorrect {
   background-color: #ffe1b7; /* Red */
@@ -17,34 +57,43 @@
 }
 
 #derinput {
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    display: table;
-}
-
-.inputgrid {
-  display: inline-grid;
-  grid-template-columns: auto auto;
-}
-
-input {
-  border: 1px solid #ccc;
-  border-radius: 3px;
-}
-
-.inputgrid > * , div[id=word], input#submit , #derinput > p{
-  margin: 10px;
-  padding: 10px;
+    margin: 0.6rem 0rem;
 }
 
 div[id=word] {
   font-weight: bold;
-  font-size: 120%;
+  font-size: 1.2rem;
   text-align: center;
   display: block;
 }
 
-#loadbuttons > button {
-  display: block;
-  margin: 5px 0px 5px 0px;
+.inputgrid {
+  display: inline-grid;
+  grid-template-columns: 10em auto;
+  width: 100%; /* Fill avaible space */
+}
+
+input#submit {
+  width: 100%;
+  margin: 0.6rem 0rem;
+  font-size: 1rem;
+  background-color: #ECECEC;
+}
+
+div#loadbuttons {
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+    width: 100%;
+}
+
+button#loadnouns {
+  margin: 0.6rem 0.6rem 0.6rem 0rem;
+}
+
+button#loadverbs {
+  margin: 0.6rem;
+}
+
+button#loadadjectives {
+  margin: 0.6rem 0rem 0.6rem 0.6rem;
 }
