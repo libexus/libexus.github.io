@@ -66,16 +66,19 @@ function checkCurrentForm() {
   let isCorrect = true;
   tries++;
   trimTextInputs();
+  let lastResult = formData.header.toLowerCase();
   for (let inputData of formData.form) {
     let elem = document.getElementById(`input_${inputData.id}`);
-    if (elem.value && inputData.solution.toLowerCase() == (("pre" in inputData)
-                      ? inputData.pre(elem.value) : elem.value).toLowerCase()) {
+    let currentResult = inputData.solution.toLowerCase();
+    let textInput = (("pre" in inputData) ? inputData.pre(elem.value) : elem.value).toLowerCase();
+    if (elem.value && currentResult == (textInput == "..") ? lastResult : textInput) {
       elem.classList.add("correct");
       elem.disabled = true;
     } else {
       elem.classList.add("incorrect");
       isCorrect = false;
     }
+    lastResult = currentResult;
   }
   if (isCorrect) {
     if (tries == 1) {
