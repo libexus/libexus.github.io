@@ -68,8 +68,8 @@ function checkCurrentForm() {
   trimTextInputs();
   for (let inputData of formData.form) {
     let elem = document.getElementById(`input_${inputData.id}`);
-    if (elem.value && inputData.solution == (("pre" in inputData)
-                      ? inputData.pre(elem.value) : elem.value)) {
+    if (elem.value && inputData.solution.toLowerCase() == (("pre" in inputData)
+                      ? inputData.pre(elem.value) : elem.value).toLowerCase()) {
       elem.classList.add("correct");
       elem.disabled = true;
     } else {
