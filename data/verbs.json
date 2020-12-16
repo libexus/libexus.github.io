@@ -3,7 +3,7 @@
     {"gr": "va", "inf": "amare", "st":"am", "p_st": "amav", "ppp_st": "amat", "tr": ["lieben"]},
     {"gr": "ve", "inf": "habere", "st":"hab", "p_st": "habu", "ppp_st": "habit", "tr": ["haben"]},
     {"gr": "vk", "inf": "mittere", "st":"mitt", "p_st": "mis", "ppp_st": "miss", "tr": ["schicken"]},
-    {"gr": "vi", "inf": "audere", "st":"aud", "p_st": "audiv", "ppp_st": "audit", "tr": ["hören"]},
-    {"gr": "vm", "inf": "capere", "st":"cap", "p_st": "cep", "ppp_st": "capt", "tr": ["fassen"]}
+    {"gr": "vi", "inf": "audire", "st":"aud", "p_st": "audiv", "ppp_st": "audit", "tr": ["hören"]},
+    {"gr": "vm", "inf": "capere", "st":"cap", "p_st": "cep", "ppp_st": "capt", "tr": ["fassen", "ergreifen","fangen","nehmen"]}
   ]
 }
