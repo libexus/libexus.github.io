@@ -69,16 +69,20 @@ function checkCurrentForm() {
   let lastResult = formData.header.toLowerCase();
   for (let inputData of formData.form) {
     let elem = document.getElementById(`input_${inputData.id}`);
-    let currentResult = inputData.solution.toLowerCase();
+    let currentResult = inputData.solution;
+    currentResult.forEach((res, i, arr) => arr[i] = res.toLowerCase());
     let textInput = (("pre" in inputData) ? inputData.pre(elem.value) : elem.value).toLowerCase();
-    if (elem.value && currentResult == (textInput == "..") ? lastResult : textInput) {
+    let inputIndex = currentResult.indexOf((textInput == "..") ? lastResult : textInput);
+    if (textInput &&  inputIndex != -1) {
       elem.classList.add("correct");
       elem.disabled = true;
+      lastResult = currentResult[inputIndex]; // textInput may be "..", so it is necessary to use this
     } else {
       elem.classList.add("incorrect");
+      lastResult = (textInput == "..") ? lastResult : textInput;
       isCorrect = false;
     }
-    lastResult = currentResult;
+    elem.value = lastResult; // Resolves ".." to real result
   }
   if (isCorrect) {
     if (tries == 1) {
@@ -98,9 +102,9 @@ function buildNoun() {
       header: noun.sg1,
       form: [
         {id: "sg2", name: "2.F Sg.",
-          solution: noun.st + deklEndSet[noun.gr[2]][1]},
+          solution: [noun.st + deklEndSet[noun.gr[2]][1]]},
         {id: "ge",  name: "Geschlecht",
-          solution: noun.gr[1],
+          solution: [noun.gr[1]],
           pre: input => input.toLowerCase()},
         {id: "tr",  name: "Übersetzung",
           solution: noun.tr}
@@ -120,9 +124,9 @@ function buildVerb() {
     formData = {
       header: verb.inf,
       form: [
-        {id: "sg1", name: "1.P Sg", solution: verb.st + konjEndSet[verb.gr[1]][0]},
-        {id: "p_sg1", name: "1.P Sg Perfekt", solution: verb.p_st + perfEndSet[0]},
-        {id: "ppp_sg1_n", name: "1.P Sg PPP", solution: verb.ppp_st + deklEndSet.o[3]},
+        {id: "sg1", name: "1.P Sg", solution: [verb.st + konjEndSet[verb.gr[1]][0]]},
+        {id: "p_sg1", name: "1.P Sg Perfekt", solution: [verb.p_st + perfEndSet[0]]},
+        {id: "ppp_sg1_n", name: "1.P Sg PPP", solution: [verb.ppp_st + deklEndSet.o[3]]},
         {id: "tr", name: "Übersetzung", solution: verb.tr}
       ]
     }
@@ -142,18 +146,18 @@ function buildAdjective() {
       form: []
     }
     if (adj.gr[1] == "a") {
-      formData.form.push({id: "sg1_f", name: "1.Sg F", solution: adj.st + adjEndSet[adj.gr[1]+"f"][0]});
-      formData.form.push({id: "sg1_n", name: "1.Sg N", solution: adj.st + adjEndSet[adj.gr[1]+"n"][0]});
+      formData.form.push({id: "sg1_f", name: "1.Sg F", solution: [adj.st + adjEndSet[adj.gr[1]+"f"][0]]});
+      formData.form.push({id: "sg1_n", name: "1.Sg N", solution: [adj.st + adjEndSet[adj.gr[1]+"n"][0]]});
     } else if (adj.gr[1] == "k") {
       if (adj.sg1.length === 1) {
-        formData.form.push({id: "sg1_f", name: "1.Sg F", solution: adj.sg1[0]});
-        formData.form.push({id: "sg1_n", name: "1.Sg N", solution: adj.sg1[0]});
+        formData.form.push({id: "sg1_f", name: "1.Sg F", solution: [adj.sg1[0]]});
+        formData.form.push({id: "sg1_n", name: "1.Sg N", solution: [adj.sg1[0]]});
       } else if (adj.sg1.length === 2) {
-        formData.form.push({id: "sg1_f", name: "1.Sg F", solution: adj.sg1[0]});
-        formData.form.push({id: "sg1_n", name: "1.Sg N", solution: adj.sg1[1]});
+        formData.form.push({id: "sg1_f", name: "1.Sg F", solution: [adj.sg1[0]]});
+        formData.form.push({id: "sg1_n", name: "1.Sg N", solution: [adj.sg1[1]]});
       } else if (adj.sg1.length === 3) {
-        formData.form.push({id: "sg1_f", name: "1.Sg F", solution: adj.sg1[1]});
-        formData.form.push({id: "sg1_n", name: "1.Sg N", solution: adj.sg1[2]});
+        formData.form.push({id: "sg1_f", name: "1.Sg F", solution: [adj.sg1[1]]});
+        formData.form.push({id: "sg1_n", name: "1.Sg N", solution: [adj.sg1[2]]});
       }
     }
     formData.form.push({id:"tr", name: "Übersetzung", solution: adj.tr});
